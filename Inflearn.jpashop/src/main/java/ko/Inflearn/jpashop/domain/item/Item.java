@@ -1,9 +1,12 @@
 package ko.Inflearn.jpashop.domain.item;
 
+import ko.Inflearn.jpashop.domain.Category;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,7 +19,7 @@ public abstract class Item {
     @Column(name = "item_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;
 
@@ -24,4 +27,7 @@ public abstract class Item {
     private int price;
     private int stockQuantity;
 
+
+    @ManyToMany(mappedBy = "items")
+    private List<Category> categories = new ArrayList<>();
 }
