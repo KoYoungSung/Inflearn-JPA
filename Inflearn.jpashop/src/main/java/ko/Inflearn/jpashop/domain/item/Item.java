@@ -3,31 +3,20 @@ package ko.Inflearn.jpashop.domain.item;
 import ko.Inflearn.jpashop.domain.Category;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
 @Entity
-@Getter
-@Setter
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype")
+@Getter @Setter
 public abstract class Item {
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     @Column(name = "item_id")
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "item_id")
-    private Item item;
-
     private String name;
     private int price;
     private int stockQuantity;
-
-
     @ManyToMany(mappedBy = "items")
-    private List<Category> categories = new ArrayList<>();
+    private List<Category> categories = new ArrayList<Category>();
 }

@@ -3,7 +3,6 @@ package ko.Inflearn.jpashop.service;
 import ko.Inflearn.jpashop.domain.Member;
 import ko.Inflearn.jpashop.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
